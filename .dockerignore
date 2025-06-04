@@ -1,0 +1,16 @@
+# Ignore node_modules (they're installed within the container)
+node_modules
+
+# Ignore Docker files themselves
+Dockerfile
+.dockerignore
+
+# Ignore Git files and folders
+.git
+.gitignore
+
+# Ignore devcontainer config (usually not needed inside container)
+.devcontainer
+
+# Ignore any local logs or temp files
+*.log

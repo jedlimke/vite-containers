@@ -8,6 +8,9 @@ RUN npm install --include=dev
 
 COPY . .
 
+# Set permissions for the node user (optional, but good practice)
+RUN chown -R node:node /workspace
+
 USER node
 
 EXPOSE 3000
