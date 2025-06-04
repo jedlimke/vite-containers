@@ -4,10 +4,28 @@
     "dockerfile": "../Dockerfile"
   },
   "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash"
+        "terminal.integrated.shell.linux": "/bin/bash",
+
+        // There are files we don't want to see while inside the container,
+        // despite having the external volume/workspace mounted bi-directionally:
+        "files.exclude": {
+          "**/.git": true,
+          "**/Dockerfile": true,
+          "**/.dockerignore": true,
+          "**/.devcontainer": true
+        },
+        "search.exclude": {
+          "**/.git": true,
+          "**/Dockerfile": true,
+          "**/.dockerignore": true,
+          "**/.devcontainer": true
+        }
       },
       "extensions": [
         "esbenp.prettier-vscode",
@@ -18,5 +36,5 @@
     }
   },
   "postCreateCommand": "npm install",
-  "forwardPorts": [3000]
+  "forwardPorts": [5173]
 }
